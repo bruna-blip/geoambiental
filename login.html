@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeoAmbiental — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary:#1e7d4b; --primary-dark:#155c36; --bg:#f0f4f1; --card:#ffffff;
+      --border:#d1ddd6; --text:#1a2e22; --muted:#6b7c70; --danger:#b91c1c; --success:#166534;
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:'Inter',sans-serif;background:linear-gradient(135deg,#f0f4f1,#e8f5ee);min-height:100vh;display:grid;place-items:center;padding:24px;color:var(--text)}
+    .login-card{width:100%;max-width:420px;background:var(--card);border:1px solid var(--border);border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.08);padding:28px}
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),#40c074);display:grid;place-items:center;color:#fff;font-size:22px}.brand h1{font-size:1.1rem;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:.86rem}
+    .field{margin-bottom:14px}.field label{display:block;font-size:.82rem;font-weight:600;margin-bottom:6px;color:var(--muted)}
+    .field input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;font:inherit}
+    .field input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(30,125,75,.12)}
+    .btn{width:100%;padding:12px 16px;border:none;border-radius:10px;background:var(--primary);color:#fff;font:600 .95rem 'Inter',sans-serif;cursor:pointer}.btn:hover{background:var(--primary-dark)}.btn:disabled{opacity:.7;cursor:not-allowed}
+    .secondary{margin-top:10px;background:transparent;color:var(--primary);border:1px solid var(--primary)}
+    .login-message{min-height:22px;margin:10px 0 16px;font-size:.86rem}.login-message.error{color:var(--danger)}.login-message.success{color:var(--success)}.login-message.info{color:var(--muted)}
+    .small{margin-top:16px;font-size:.78rem;color:var(--muted);line-height:1.45}
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="brand">
+      <div class="icon">🌿</div>
+      <div>
+        <h1>GeoAmbiental</h1>
+        <p>Acesso restrito ao sistema</p>
+      </div>
+    </div>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">E-mail</label>
+        <input id="loginEmail" type="email" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="loginPassword">Senha</label>
+        <input id="loginPassword" type="password" autocomplete="current-password" required />
+      </div>
+      <div id="loginMessage" class="login-message info"></div>
+      <button id="loginSubmit" class="btn" type="submit">Entrar</button>
+      <button id="forgotPassword" class="btn secondary" type="button">Esqueci minha senha</button>
+    </form>
+
+    <div class="small">
+      Os usuários precisam existir no Auth do Supabase e ter perfil cadastrado na tabela <strong>profiles</strong>.
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
